@@ -3,10 +3,10 @@ import { renderListWithTemplate } from "./utils.mjs";
 function productCardTemplate(product) {
     return `
     <li class="product-card">
-      <a href="product_pages/?product=${product.Id}">
-        <img src="${product.Image}" alt="${product.Name}">
-        <h2>${product.Brand.Name}</h2>
-        <h3>${product.Name}</h3>
+      <a href="/product_pages/?product=${product.Id}">
+        <img src="${product.Images.PrimaryMedium}" alt="${product.Name}">
+        <h3>${product.Brand.Name}</h3>
+        <p>${product.NameWithoutBrand}</p>
         <p class="product-card__price">$${product.FinalPrice}</p>
       </a>
     </li>
@@ -21,22 +21,18 @@ export default class ProductList {
     }
 
     async init() {
-        const list = await this.dataSource.getData();
+        const list = await this.dataSource.getData(this.category);
         this.renderList(list);
+        document.querySelector(".title").textContent = this.category;
     }
 
     renderList(list) {
-        if (!Array.isArray(list) || !this.listElement) return;
+        // const htmlStrings = list.map(productCardTemplate);
+        // this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
 
-        const filtered = list.filter((p) => p && p.Id !== "989CG" && p.Id !== "880RT");
-        if (filtered.length === 0) {
-            this.listElement.innerHTML = "";
-            return;
-        }
-
-        renderListWithTemplate(productCardTemplate, this.listElement, filtered);
+        // apply use new utility function instead of the commented code above
+        renderListWithTemplate(productCardTemplate, this.listElement, list);
 
     }
 
 }
-

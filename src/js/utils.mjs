@@ -22,11 +22,12 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+// get the product id from the query string
 export function getParam(param) {
-  const quryString = window.location.search;
-  const urlParams = new URLSearchParams(quryString);
-  const product = urlParams.get('product');
-  return product;
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get(param);
+  return product
 }
 
 export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
@@ -45,7 +46,7 @@ export function renderWithTemplate(template, parentElement, data, callback) {
   }
 }
 
-export async function loadTemplate(path) {
+async function loadTemplate(path) {
   const res = await fetch(path);
   const template = await res.text();
   return template;
