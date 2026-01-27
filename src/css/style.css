@@ -343,3 +343,125 @@ footer {
 .hide {
   display: none;
 }
+
+/* Checkout Page Styles */
+.checkout {
+  padding: 1em;
+}
+
+.checkout h2 {
+  text-align: center;
+  margin-bottom: 2em;
+  color: var(--secondary-color);
+}
+
+.checkout-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+fieldset {
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+legend {
+  font-weight: bold;
+  color: var(--secondary-color);
+  padding: 0 0.5em;
+  font-size: 1.1em;
+}
+
+.checkout__name,
+.checkout__address,
+.checkout__payment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
+.checkout__name>label:nth-child(3),
+.checkout__name>input:nth-child(4),
+.checkout__address>label:nth-child(3),
+.checkout__address>input:nth-child(4),
+.checkout__address>label:nth-child(5),
+.checkout__address>input:nth-child(6),
+.checkout__address>label:nth-child(7),
+.checkout__address>input:nth-child(8),
+.checkout__payment>label:nth-child(3),
+.checkout__payment>input:nth-child(4),
+.checkout__payment>label:nth-child(5),
+.checkout__payment>input:nth-child(6) {
+  /* Grid items automatically flow */
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: var(--dark-grey);
+  margin-bottom: 0.5em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="hidden"] {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  font-size: inherit;
+  font-family: var(--font-body);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(240, 168, 104, 0.3);
+}
+
+.order__summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  padding: 1em 0;
+}
+
+.order__summary>div {
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.order__summary>div:nth-child(odd) {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.order__summary>div:nth-child(even) {
+  text-align: right;
+}
+
+#checkoutSubmit {
+  width: 100%;
+  padding: 1em;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#checkoutSubmit:hover {
+  background-color: var(--tertiary-color);
+}
+
+#checkoutSubmit:active {
+  transform: scale(0.98);
+}
