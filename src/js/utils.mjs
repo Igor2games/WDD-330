@@ -40,9 +40,11 @@ export function renderListWithTemplate(template, parentElement, list, position =
 }
 
 export function renderWithTemplate(template, parentElement, data, callback) {
-  parentElement.innerHTML = template;
-  if (callback) {
-    callback(data);
+  if (parentElement) {
+    parentElement.innerHTML = template;
+    if (callback) {
+      callback(data);
+    }
   }
 }
 
